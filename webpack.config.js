@@ -1,10 +1,51 @@
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
-  entry: "./src/index.js",
+  mode: "development",
+  entry: {
+    app: "./src/app.js",
+    button: "./src/components/button/button.js",
+    image: "./src/components/image/image.js",
+    title: "./src/components/title/title.js"
+  },
+  devtool: "inline-source-map",
+  devServer: {
+    contentBase: "./docs"
+  },
+  plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: "Output Management"
+    })
+  ],
   output: {
-    filename: "bundle.js",
-    path: path.resolve(__dirname, "docs")
+    path: path.resolve(__dirname, "docs"),
+    filename: "[name].[contenthash].bundle.js"
+  },
+  optimization: {
+    runtimeChunk: "single",
+    splitChunks: {
+      chunks: "all",
+      maxInitialRequests: Infinity,
+      minSize: 0,
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name(module) {
+            // get the name. E.g. node_modules/packageName/not/this/part.js
+            // or node_modules/packageName
+            const packageName = module.context.match(
+              /[\\/]node_modules[\\/](.*?)([\\/]|$)/
+            )[1];
+
+            // npm package names are URL-safe, but some servers don't like @ symbols
+            return `npm.${packageName.replace("@", "")}`;
+          }
+        }
+      }
+    }
   },
   module: {
     rules: [
