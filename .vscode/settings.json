@@ -1,4 +1,11 @@
 {
-  "editor.formatOnPaste": true,
-  "editor.formatOnSave": true
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.suggest.autoImports": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.tslint": true
+  },
+  "[json]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true
+  },
 }

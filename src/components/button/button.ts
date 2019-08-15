@@ -1,7 +1,7 @@
-import printMe from "./print";
 import Copy from "../copy/copy";
+import printMe from "./print";
 
-export default function Button() {
+export default function Button(): HTMLButtonElement {
   const btn = document.createElement("button");
   btn.innerHTML = "Click me and check the console!";
   btn.onclick = () => {

@@ -1,11 +1,9 @@
-import Xml from "./data.xml";
 import Json from "./data.json";
+import Xml from "./data.xml";
 
 export default function printMe() {
   const data = {
+    json: Json,
     xml: Xml,
-    json: Json
   };
-  console.log("I get called from print.js!");
-  console.log({ data });
 }
