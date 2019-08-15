@@ -1,6 +1,6 @@
-import Button from "./components/button/button.js";
-import Image from "./components/image/image.js";
-import Title from "./components/title/title.js";
+import Button from "./components/button/button";
+import Image from "./components/image/image";
+import Title from "./components/title/title";
 import "./style.css";
 
 function app() {

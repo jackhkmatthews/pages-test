@@ -5,10 +5,13 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 module.exports = {
   mode: "development",
   entry: {
-    app: "./src/app.js",
-    button: "./src/components/button/button.js",
-    image: "./src/components/image/image.js",
-    title: "./src/components/title/title.js"
+    app: "./src/app.ts",
+    button: "./src/components/button/button.ts",
+    image: "./src/components/image/image.ts",
+    title: "./src/components/title/title.ts"
+  },
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"]
   },
   devtool: "inline-source-map",
   devServer: {
@@ -49,6 +52,19 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        use: [
+          {
+            loader: "ts-loader",
+            options: {
+              transpileOnly: true,
+              experimentalWatchApi: true
+            }
+          }
+        ],
+        exclude: /node_modules/
+      },
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"]
