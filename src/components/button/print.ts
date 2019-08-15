@@ -4,6 +4,7 @@ import Xml from "./data.xml";
 export default function printMe() {
   const data = {
     json: Json,
-    xml: Xml,
+    xml: Xml
   };
+  console.log({ data });
 }
