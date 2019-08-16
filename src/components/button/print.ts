@@ -6,5 +6,6 @@ export default function printMe() {
     json: Json,
     xml: Xml
   };
+  /* tslint:disable */
   console.log({ data });
 }
