@@ -3,13 +3,14 @@
     "outDir": "./dist/",
     "noImplicitAny": true,
     "module": "esNext",
-    "target": "es5",
+    "target": "es2015",
     "jsx": "react",
     "allowJs": true,
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "noUnusedLocals": true,
+    "experimentalDecorators": true,
     "plugins": [
       {
         "name": "typescript-tslint-plugin"

@@ -1,12 +1,19 @@
-import Copy from "../copy/copy";
+import { customElement, html, LitElement, property } from "lit-element";
 import printMe from "./print";
 
-export default function Button(): HTMLButtonElement {
-  const btn = document.createElement("button");
-  btn.innerHTML = "Click me and check the console!";
-  btn.onclick = () => {
+@customElement("button-element")
+export class ButtonElement extends LitElement {
+  @property()
+  public copy = "Click me and check the console!";
+  public handleClick() {
     printMe();
-    document.body.appendChild(Copy());
-  };
-  return btn;
+    document.body.appendChild(document.createElement("copy-element"));
+  }
+  public render() {
+    return html`
+      <button @click="${this.handleClick}">
+        ${this.copy}
+      </button>
+    `;
+  }
 }

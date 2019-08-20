@@ -1,7 +1,12 @@
-import { html } from "lit-html";
+import { customElement, html, LitElement } from "lit-element";
 import James from "./james.jpg";
 
-export const flipImage = () => html`
-  <img src=${James} />
-  <img src=${James} />
-`;
+@customElement("image-flip-element")
+export class ImageFlipElement extends LitElement {
+  public render() {
+    return html`
+      <img src=${James} />
+      <img src=${James} />
+    `;
+  }
+}

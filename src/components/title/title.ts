@@ -1,13 +1,17 @@
+import { customElement, html, LitElement, property } from "lit-element";
 import _ from "lodash";
 import * as moment from "moment";
 import "./title.css";
 
-export default function Title() {
-  const title = document.createElement("h1");
-  title.innerHTML = _.join(
-    ["Hi there", "webpack<br>", moment().format("MMMM Do YYYY, h:mm:ss a")],
-    " ",
-  );
-  title.classList.add("hello");
-  return title;
+@customElement("title-element")
+export class TitleElement extends LitElement {
+  @property()
+  public copy = "Hi there webpack, typescript and lit-element";
+  public render() {
+    return html`
+      <h1 class="hello">
+        ${this.copy} ${moment().format("MMMM Do YYYY, h:mm:ss a")}
+      </h1>
+    `;
+  }
 }

@@ -7,7 +7,7 @@ module.exports = {
   entry: {
     app: "./src/app.ts",
     button: "./src/components/button/button.ts",
-    image: "./src/components/image/image.ts",
+    flipImage: "./src/components/flip-image/flip-image.ts",
     title: "./src/components/title/title.ts"
   },
   resolve: {
